@@ -1,3 +1,3 @@
 public interface WithdrawStrategy {
-    void withdraw(double amount, Account account);
+    void withdraw(Account account, double amount);
 }
