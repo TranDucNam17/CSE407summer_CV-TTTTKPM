@@ -1,19 +1,13 @@
-
-
-public class Account {
+public abstract class Account {
     protected double balance;
 
-    protected void setInitialBalance(double amount){
-        this.balance = amount;
+    public Account(double balance) {
+        this.balance = balance;
     }
 
-    public void withdraw(double amount){
-        if(amount <= balance){
-            balance -= amount;
-        }
-    }
+    public abstract void withdraw(double amount);
 
-    public double getBalance(){
+    public double getBalance() {
         return balance;
     }
 }

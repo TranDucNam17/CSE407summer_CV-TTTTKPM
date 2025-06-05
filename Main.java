@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        AccountBuilder builder = new SavingsAccountBuilder();
-        AccountDirector director = new AccountDirector(builder);
+        AccountFactory factory = new SavingsAccountFactory();
+        Client client = new Client(factory, 1000.0);
 
-        Account acc = director.createSavingsAccount(500, 300, 300);
-
-        System.out.println("Số dư còn lại: " + acc.getBalance());
+        client.showBalance();
+        client.makeWithdrawal(200);
+        client.makeWithdrawal(900);  // thử rút quá số dư
+        client.showBalance();
     }
 }
