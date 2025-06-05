@@ -1,5 +1,5 @@
-public class SavingsAccount extends Account {
-    public SavingsAccount(AccountMediator mediator, double initialBalance) {
+public class CheckingAccount extends Account {
+    public CheckingAccount(AccountMediator mediator, double initialBalance) {
         super(mediator, initialBalance);
     }
 

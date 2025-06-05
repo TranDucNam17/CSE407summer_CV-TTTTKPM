@@ -1,9 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        Service service = new Service();
-        ClientInterface adapter = new Adapter(service);
-        Client client = new Client(adapter);
+        BankMediator mediator = new BankMediator();
 
-        client.doSomething("Hello Adapter Pattern!");
+        Account savings = new SavingsAccount(mediator, 1000);
+        Account checking = new CheckingAccount(mediator, 500);
+
+        mediator.registerSavings(savings);
+        mediator.registerChecking(checking);
+
+        savings.withdraw(200);
+        checking.withdraw(100);
+        savings.withdraw(1000); // thử rút vượt quá số dư
     }
 }
