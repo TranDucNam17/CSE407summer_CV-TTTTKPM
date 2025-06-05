@@ -1,11 +1,16 @@
-
-
 public class SavingsAccount extends Account {
-    public void safeWithdraw(double amount){
-        if(balance - amount >= 100){
-            withdraw(amount);
-        }else{
-            System.out.println("Khong the rut: " + amount + ": so du se duoi 100.");
+
+    public SavingsAccount(double balance) {
+        super(balance);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("SavingsAccount: Rút " + amount + ". Số dư còn lại: " + balance);
+        } else {
+            System.out.println("SavingsAccount: Số dư không đủ!");
         }
     }
 }
