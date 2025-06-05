@@ -1,19 +1,28 @@
-public abstract class Account {
-    protected double balance;
-    protected AccountMediator mediator;
+public class Account {
+    private double balance;
+    private WithdrawStrategy strategy;
 
-    public Account(AccountMediator mediator, double initialBalance) {
-        this.mediator = mediator;
-        this.balance = initialBalance;
+    public Account(double balance) {
+        this.balance = balance;
     }
 
-    public abstract void withdraw(double amount);
+    public void setStrategy(WithdrawStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void withdraw(double amount) {
+        if (strategy != null) {
+            strategy.withdraw(this, amount);
+        } else {
+            System.out.println("No withdraw strategy set.");
+        }
+    }
 
     public double getBalance() {
         return balance;
     }
 
-    public String getType() {
-        return this.getClass().getSimpleName();
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }
